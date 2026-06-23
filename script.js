@@ -1,3 +1,4 @@
+const filterCategory = document.getElementById('filter-category');
 const form = document.getElementById('expense-form');
 const expenseList = document.getElementById('expense-list');
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
@@ -17,20 +18,30 @@ form.addEventListener('submit', function(e) {
   form.reset();
 });
 
+filterCategory.addEventListener('change', function() {
+  renderExpenses();
+});
+
 function renderExpenses() {
   expenseList.innerHTML = '';
   localStorage.setItem('expenses', JSON.stringify(expenses));
 
   let total = 0;
 
-  expenses.forEach(function(exp, index) {
+  const filtered = filterCategory.value === 'All'
+    ? expenses
+    : expenses.filter(exp => exp.category === filterCategory.value);
+
+  filtered.forEach(function(exp) {
+    const realIndex = expenses.indexOf(exp);
+
     const li = document.createElement('li');
     li.textContent = `${exp.note} - ₹${exp.amount} (${exp.category}) on ${exp.date}`;
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.addEventListener('click', function() {
-      expenses.splice(index, 1);
+      expenses.splice(realIndex, 1);
       renderExpenses();
     });
 
@@ -42,4 +53,5 @@ function renderExpenses() {
 
   document.getElementById('total').textContent = total;
 }
+
 renderExpenses();
