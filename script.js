@@ -1,3 +1,22 @@
+const form = document.getElementById('expense-form');
+const expenseList = document.getElementById('expense-list');
+let expenses = [];
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const note = document.getElementById('note').value;
+  const amount = document.getElementById('amount').value;
+  const category = document.getElementById('category').value;
+  const date = document.getElementById('date').value;
+
+  const expense = { note, amount, category, date };
+  expenses.push(expense);
+
+  renderExpenses();
+  form.reset();
+});
+
 function renderExpenses() {
   expenseList.innerHTML = '';
 
