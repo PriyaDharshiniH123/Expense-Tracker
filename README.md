@@ -1,0 +1,7 @@
+Managing daily expenses is something every college student struggles with — money disappears without any clear picture of where it went. Without a simple tool to log and categorize spending, it's almost impossible to build any financial awareness or control. This project was built to solve exactly that: a clean, no-login, no-server expense tracker that works right in the browser.
+
+Building this from scratch came with real challenges. As someone with no prior project experience, even basic concepts like DOM manipulation, form handling, and why e.preventDefault() matters had to be figured out through trial and error. One particularly tricky bug involved accidentally defining the same function twice, causing the total to silently never update — the kind of issue that doesn't throw an error but quietly breaks everything.
+
+Each problem was debugged methodically — reading the console, isolating which part of the code was responsible, and fixing it without just copying a solution. localStorage persistence, dynamic rendering, category filtering, and the delete functionality were all built incrementally, with each feature tested before moving to the next.
+
+The result is a fully functional, deployed expense tracker that lets users log expenses by category, view a running total, filter by category, and have their data persist across sessions — all with zero backend. Live at rupee-log.netlify.app.
