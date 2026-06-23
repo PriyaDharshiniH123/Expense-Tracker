@@ -1,6 +1,6 @@
 const form = document.getElementById('expense-form');
 const expenseList = document.getElementById('expense-list');
-let expenses = [];
+let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -19,6 +19,7 @@ form.addEventListener('submit', function(e) {
 
 function renderExpenses() {
   expenseList.innerHTML = '';
+  localStorage.setItem('expenses', JSON.stringify(expenses));
 
   let total = 0;
 
@@ -41,3 +42,4 @@ function renderExpenses() {
 
   document.getElementById('total').textContent = total;
 }
+renderExpenses();
