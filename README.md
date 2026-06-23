@@ -4,4 +4,4 @@ Building this from scratch came with real challenges. As someone with no prior p
 
 Each problem was debugged methodically — reading the console, isolating which part of the code was responsible, and fixing it without just copying a solution. localStorage persistence, dynamic rendering, category filtering, and the delete functionality were all built incrementally, with each feature tested before moving to the next.
 
-The result is a fully functional, deployed expense tracker that lets users log expenses by category, view a running total, filter by category, and have their data persist across sessions — all with zero backend. Live at rupee-log.netlify.app.
+The result is a fully functional, deployed expense tracker that lets users log expenses by category, view a running total, filter by category, and have their data persist across sessions — all with zero backend. Live at [rupee-log.netlify.app](https://rupee-log.netlify.app)
