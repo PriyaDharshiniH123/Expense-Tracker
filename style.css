@@ -101,3 +101,9 @@ li button {
 li button:hover {
   background: #e53e3e;
 }
+
+#expense-chart {
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+}

@@ -2,6 +2,7 @@ const filterCategory = document.getElementById('filter-category');
 const form = document.getElementById('expense-form');
 const expenseList = document.getElementById('expense-list');
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+let chart = null;
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -52,6 +53,30 @@ function renderExpenses() {
   });
 
   document.getElementById('total').textContent = total;
+  renderChart();
+}
+
+function renderChart() {
+  const categories = ['Food', 'Travel', 'Shopping', 'Other'];
+  const totals = categories.map(cat =>
+    expenses
+      .filter(exp => exp.category === cat)
+      .reduce((sum, exp) => sum + Number(exp.amount), 0)
+  );
+
+  if (chart) chart.destroy();
+
+  const ctx = document.getElementById('expense-chart').getContext('2d');
+  chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: categories,
+      datasets: [{
+        data: totals,
+        backgroundColor: ['#fc8181', '#667eea', '#68d391', '#f6ad55']
+      }]
+    }
+  });
 }
 
 renderExpenses();
